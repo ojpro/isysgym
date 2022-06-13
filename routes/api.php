@@ -20,28 +20,34 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Contact Information
-Route::apiResource('contact',ContactInformationController::class);
+Route::apiResource('contact', ContactInformationController::class);
 
 // GYM
-Route::apiResource('gym',\App\Http\Controllers\GymController::class);
+Route::apiResource('gym', \App\Http\Controllers\GymController::class);
 
 // User
-Route::apiResource('user',\App\Http\Controllers\UserController::class);
+Route::apiResource('user', \App\Http\Controllers\UserController::class);
 
 // Role
-Route::apiResource('role',\App\Http\Controllers\RoleController::class);
+Route::apiResource('role', \App\Http\Controllers\RoleController::class);
 
 // User Role
-Route::apiResource('user-role',\App\Http\Controllers\UserRoleController::class);
+Route::apiResource('user-role', \App\Http\Controllers\UserRoleController::class);
 
 // Membership
-Route::apiResource('membership',\App\Http\Controllers\MembershipController::class);
+Route::apiResource('membership', \App\Http\Controllers\MembershipController::class);
 
 // Member
-Route::apiResource('member',\App\Http\Controllers\MemberController::class);
+Route::apiResource('member', \App\Http\Controllers\MemberController::class);
 
 // Subscription
-Route::apiResource('subscription',\App\Http\Controllers\SubscriptionController::class);
+Route::apiResource('subscription', \App\Http\Controllers\SubscriptionController::class);
 
 // Attendance
-Route::apiResource('attendance',\App\Http\Controllers\AttendanceController::class);
+Route::apiResource('attendance', \App\Http\Controllers\AttendanceController::class);
+
+// Installation
+Route::get('install', [\App\Http\Controllers\InstallationController::class, 'index'])
+    ->name('install.index');
+Route::post('install', [\App\Http\Controllers\InstallationController::class, 'store'])
+    ->name('install.store');
