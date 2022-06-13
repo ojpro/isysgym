@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'attended_at',
+        'member_id'
+    ];
 }
