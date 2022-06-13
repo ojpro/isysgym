@@ -113,8 +113,6 @@ class MembershipTest extends TestCase
             'number_of_attendances' => 6
         ]);
 
-        $this->get(route('membership.show', $membership->id));
-
         $this->put(route('membership.update', $membership), [
             'price' => 25.4,
             'number_of_attendances' => 7
