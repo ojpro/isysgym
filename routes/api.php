@@ -42,3 +42,6 @@ Route::apiResource('member',\App\Http\Controllers\MemberController::class);
 
 // Subscription
 Route::apiResource('subscription',\App\Http\Controllers\SubscriptionController::class);
+
+// Attendance
+Route::apiResource('attendance',\App\Http\Controllers\AttendanceController::class);
