@@ -26,6 +26,8 @@ class InstallationControllerTest extends TestCase
      */
     public function test_get_install_return_false_if_app_not_installed()
     {
+        Config::set('APP_INSTALLED',false);
+
         $http_response_header = $this->get(route('install.getState'));
 
         // TODO: use a better way to check the state
@@ -61,7 +63,7 @@ class InstallationControllerTest extends TestCase
     // TODO: work in this situation
     public function system_not_working_if_the_app_not_installed()
     {
-        Config::set('APP_INSTALLED', false);
+        Config::set('APP_INSTALLED', true);
 
         $http_response_header = $this->get('/');
 
