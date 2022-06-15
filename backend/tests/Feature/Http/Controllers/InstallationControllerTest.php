@@ -26,7 +26,7 @@ class InstallationControllerTest extends TestCase
      */
     public function test_get_install_return_false_if_app_not_installed()
     {
-        Config::set('APP_INSTALLED',false);
+        Config::set('APP_INSTALLED', false);
 
         $http_response_header = $this->get(route('install.getState'));
 
@@ -49,9 +49,37 @@ class InstallationControllerTest extends TestCase
     }
 
     /**
+     * Setup Database Configuration
+     */
+    public function test_setup_database_configuration()
+    {
+
+        $configs = [
+            'DB_HOST' => 'localhost',
+            'DB_PORT' => 3306,
+            'DB_DATABASE' => 'gym',
+            'DB_USERNAME' => 'dev',
+            'DB_PASSWORD' => 'password'
+        ];
+
+        $this->post(route('install.database'), $configs);
+
+        foreach ($configs as $key => $config) {
+            // Prevent Asserting Database name in test mode
+            if ($key == 'DB_DATABASE') {
+                continue;
+            }
+
+            $this->assertTrue(env($key) == $config);
+        }
+
+    }
+
+    /**
      * POST /install make the app installed
      */
-    public function test_post_to_install_route_makes_the_app_installed(){
+    public function test_post_to_install_route_makes_the_app_installed()
+    {
         $this->post(route('install.setState'));
 
         $this->assertTrue(Config::get('APP_INSTALLED'));
