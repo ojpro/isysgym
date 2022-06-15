@@ -6,6 +6,16 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      route: this.$router
+    }
+  },
+  computed: {
+    watchRouter() {
+      this.checkIfInstalled()
+    }
+  },
   mounted() {
     // fetch the installation state
     // TODO: dispatch only if the installed is false
@@ -17,21 +27,26 @@ export default {
 
     //TODO: use guard for install routes
     //TODO: check before enter any route either on url changed manually
-    this.$router.beforeEach((to, from, next) => {
-      if (!to.matched.some(record => record.meta.install)) {
-        if (this.$store.state.installed) {
-          next()
-          return
+    this.checkIfInstalled()
+  },
+  methods: {
+    checkIfInstalled() {
+      this.$router.beforeEach((to, from, next) => {
+        if (!to.matched.some(record => record.meta.install)) {
+          if (this.$store.state.installed) {
+            next()
+            return
+          }
+          next('/install')
+        } else {
+          if (!this.$store.state.installed) {
+            next()
+            return
+          }
+          next('/')
         }
-        next('/install')
-      } else {
-        if (!this.$store.state.installed) {
-          next()
-          return
-        }
-        next('/')
-      }
-    })
+      })
+    }
   },
 }
 
