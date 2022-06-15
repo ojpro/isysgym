@@ -24,7 +24,7 @@ class InstallationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getInstalledState()
     {
         return response()->json(Config::get('APP_INSTALLED', false));
     }
@@ -35,7 +35,7 @@ class InstallationController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function setInstalledState(Request $request)
     {
 
     }

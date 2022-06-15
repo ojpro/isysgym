@@ -47,7 +47,7 @@ Route::apiResource('subscription', \App\Http\Controllers\SubscriptionController:
 Route::apiResource('attendance', \App\Http\Controllers\AttendanceController::class);
 
 // Installation
-Route::get('install', [\App\Http\Controllers\InstallationController::class, 'index'])
-    ->name('install.index');
-Route::post('install', [\App\Http\Controllers\InstallationController::class, 'store'])
-    ->name('install.store');
+Route::get('install', [\App\Http\Controllers\InstallationController::class, 'getInstalledState'])
+    ->name('install.getState');
+Route::post('install', [\App\Http\Controllers\InstallationController::class, 'setInstalledState'])
+    ->name('install.setState');

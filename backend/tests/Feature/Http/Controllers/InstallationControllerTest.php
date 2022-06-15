@@ -16,7 +16,7 @@ class InstallationControllerTest extends TestCase
      */
     public function test_is_the_install_api_routes_exists()
     {
-        $response = $this->get(route('install.index'));
+        $response = $this->get(route('install.getState'));
 
         $response->assertStatus(200);
     }
@@ -26,7 +26,7 @@ class InstallationControllerTest extends TestCase
      */
     public function test_get_install_return_false_if_app_not_installed()
     {
-        $http_response_header = $this->get(route('install.index'));
+        $http_response_header = $this->get(route('install.getState'));
 
         // TODO: use a better way to check the state
         $this->assertTrue($http_response_header->content() == 'false');
@@ -41,7 +41,7 @@ class InstallationControllerTest extends TestCase
 
         Config::set('APP_INSTALLED', true);
 
-        $http_response_header = $this->get(route('install.index'));
+        $http_response_header = $this->get(route('install.getState'));
 
         $http_response_header->assertNotFound();
     }
