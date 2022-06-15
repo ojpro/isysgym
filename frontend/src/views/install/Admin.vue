@@ -99,6 +99,8 @@ export default {
       }
 
       axios.post('/user-role', user_role).then(({data}) => {
+        localStorage.setItem('installed', 'true');
+
         this.$router.push('/install/completed')
       }).catch(error => {
         console.log(error)
