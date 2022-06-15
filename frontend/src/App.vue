@@ -11,6 +11,9 @@ export default {
     // TODO: dispatch only if the installed is false
     //TODO: solve CORS problem
     // this.$store.dispatch('fetchInstallState');
+    if (this.$store.state.installed === false) {
+      this.$store.dispatch('fetchInstallState');
+    }
 
     //TODO: use guard for install routes
   }
