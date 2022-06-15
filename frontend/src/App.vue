@@ -19,7 +19,6 @@ export default {
   mounted() {
     // fetch the installation state
     //TODO: solve CORS problem
-    // this.$store.dispatch('fetchInstallState');
     if (this.$store.state.installed === false) {
       this.$store.dispatch('fetchInstallState');
     }
