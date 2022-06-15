@@ -11,7 +11,6 @@ const store = new Vuex.Store({
         setInstallState: (state, payload) => localStorage.setItem('installed',payload)
     },
     actions: {
-        // TODO: use localStorage
         fetchInstallState: ({commit}) => {
             // Fetch Installation State from the Backend
             axios.get('/install').then(({data}) => {

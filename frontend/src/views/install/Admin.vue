@@ -63,7 +63,6 @@ export default {
     'card': InstallCard
   },
   methods: {
-    //TODO*: comment out the code
     redirectToCompleted() {
       this.createAdminRole()
     },
