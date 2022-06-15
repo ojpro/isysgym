@@ -1,9 +1,14 @@
-//TODO: sepaUse route rate common routes
-const routes = [{
+//TODO: separate common routes
+const routes = [
+    {
+        path: '/',
+        name: 'home',
+        component: () => import('../views/Home.vue')
+    },
+    {
         path: '/install',
         name: 'install.start',
         component: () => import('../views/install/Index.vue'),
-        children: []
     },
     {
         path: '/install/database',
