@@ -52,6 +52,7 @@ class InstallationController extends Controller
             setEnv($key, $config);
         }
 
+        //TODO: write tests
         if (!$this->testConnection()) {
             return response()
                 ->json(['error' => 'Connection failed, please check database\' credentials.']);
