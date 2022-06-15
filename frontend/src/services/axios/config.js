@@ -3,7 +3,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-    baseURL: 'http://gym.test/api',
+    baseURL: import.meta.env.VITE_BASE_URL,
     responseType: 'json',
     //TODO: show a loader when starting a request
     timeout: 100000
