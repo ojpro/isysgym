@@ -9,7 +9,8 @@ export default {
   mounted() {
     // fetch the installation state
     // TODO: dispatch only if the installed is false
-    this.$store.dispatch('fetchInstallState');
+    //TODO: solve CORS problem
+    // this.$store.dispatch('fetchInstallState');
 
     //TODO: use guard for install routes
   }
