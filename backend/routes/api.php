@@ -51,3 +51,5 @@ Route::get('install', [\App\Http\Controllers\InstallationController::class, 'get
     ->name('install.getState');
 Route::post('install', [\App\Http\Controllers\InstallationController::class, 'setInstalledState'])
     ->name('install.setState');
+Route::post('install/database', [\App\Http\Controllers\InstallationController::class, 'setupDatabase'])
+    ->name('install.database');
