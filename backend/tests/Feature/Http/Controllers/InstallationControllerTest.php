@@ -47,6 +47,15 @@ class InstallationControllerTest extends TestCase
     }
 
     /**
+     * POST /install make the app installed
+     */
+    public function test_post_to_install_route_makes_the_app_installed(){
+        $this->post(route('install.setState'));
+
+        $this->assertTrue(Config::get('APP_INSTALLED'));
+    }
+
+    /**
      * System won't work if the app not installed
      */
     // TODO: work in this situation
