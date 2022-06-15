@@ -26,7 +26,7 @@ class InstallationController extends Controller
      */
     public function getInstalledState()
     {
-        return response()->json(Config::get('APP_INSTALLED', false));
+        return response()->json(Config::get('APP_INSTALLED'));
     }
 
     /**
