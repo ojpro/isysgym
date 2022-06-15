@@ -11,7 +11,7 @@
         <label for="gym_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">GYM Name</label>
         <input type="text" id="gym_name"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="e.g GYMStar" required>
+               placeholder="e.g GYMStar" required v-model="fields.name">
       </div>
 
     </card>
@@ -21,6 +21,7 @@
 <script>
 import InstallationLayout from "../../layouts/InstallationLayout.vue";
 import InstallCard from "../../components/InstallCard.vue";
+import {axios} from "../../services/axios/config";
 
 export default {
   name: "GYM",
@@ -37,6 +38,9 @@ export default {
             name: 'Next'
           },
         }
+      },
+      fields: {
+        name: ''
       }
     }
   },
@@ -45,8 +49,18 @@ export default {
     'card': InstallCard
   },
   methods: {
+    //TODO: add animation for loading
     redirectToCreateAdmin() {
-      this.$router.push('/install/admin')
+      this.createGym();
+    },
+    createGym() {
+      axios.post('/gym', {
+        'name': this.fields.name
+      }).then(data => {
+        this.$router.push('/install/admin')
+      }).catch(error => {
+        console.log(error)
+      })
     }
   },
 }
