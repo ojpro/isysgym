@@ -4,11 +4,11 @@ import {axios} from "../services/axios/config";
 const store = new Vuex.Store({
     state: {
         // State to check if the app already installed
-        installed: false
+        installed: JSON.parse(localStorage.getItem('installed'))
     },
     mutations: {
         // Set the installation state
-        setInstallState: (state, payload) => state.installed = payload
+        setInstallState: (state, payload) => localStorage.setItem('installed',payload)
     },
     actions: {
         // TODO: use localStorage
