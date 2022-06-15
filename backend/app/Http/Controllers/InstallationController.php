@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gym;
-use App\Models\Role;
-use App\Models\User;
+use App\Http\Requests\StoreInstallationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -37,8 +35,22 @@ class InstallationController extends Controller
      */
     public function setInstalledState(Request $request)
     {
-        Config::set('APP_INSTALLED',true);
+        Config::set('APP_INSTALLED', true);
 
         return response()->json(Config::get('APP_INSTALLED'));
+    }
+
+    /**
+     * Configure Database Connection
+     */
+    public function setupDatabase(StoreInstallationRequest $request)
+    {
+        $request->validated();
+
+        foreach ($request->all() as $key => $config) {
+            setEnv($key, $config);
+        }
+
+        return response()->json(['success' => 'Database Configuration created successfully.']);
     }
 }
