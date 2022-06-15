@@ -18,15 +18,12 @@ export default {
   },
   mounted() {
     // fetch the installation state
-    // TODO: dispatch only if the installed is false
     //TODO: solve CORS problem
     // this.$store.dispatch('fetchInstallState');
     if (this.$store.state.installed === false) {
       this.$store.dispatch('fetchInstallState');
     }
 
-    //TODO: use guard for install routes
-    //TODO: check before enter any route either on url changed manually
     this.checkIfInstalled()
   },
   methods: {
