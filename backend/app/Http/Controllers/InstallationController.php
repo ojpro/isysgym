@@ -37,6 +37,8 @@ class InstallationController extends Controller
      */
     public function setInstalledState(Request $request)
     {
+        Config::set('APP_INSTALLED',true);
 
+        return response()->json(Config::get('APP_INSTALLED'));
     }
 }
