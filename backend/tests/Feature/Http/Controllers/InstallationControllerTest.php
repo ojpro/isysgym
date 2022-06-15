@@ -58,36 +58,4 @@ class InstallationControllerTest extends TestCase
 
         $http_response_header->assertForbidden();
     }
-
-    /**
-     * Test to create a new app
-     */
-    public function test_create_new_app()
-    {
-        $database = [
-            'db_name' => 'gymsystem',
-            'db_host' => 'localhost',
-            'db_port' => 3306,
-            'username' => 'dev',
-            'password' => 'password'
-        ];
-
-        $gym = ['name' => 'gymsystem'];
-
-        $admin = [
-            'full_name' => 'Oussama ELJABBARI',
-            'email' => 'contact@ojpro.me',
-            'password' => 'password'
-        ];
-
-        $mix = [
-            'database' => $database,
-            'gym' => $gym,
-            'admin' => $admin
-        ];
-
-        $http_response_header = $this->post(route('install.store'), $mix);
-
-        $http_response_header->assertJsonStructure(['success']);
-    }
 }
