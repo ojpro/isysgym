@@ -11,9 +11,8 @@ class InstallationController extends Controller
     public function __construct()
     {
         // Not Found page if the app already installed
-
-        if (Config::get('APP_INSTALLED')) {
-            abort(404);
+        if (env('APP_INSTALLED')) {
+            abort(403);
         }
     }
 
@@ -24,7 +23,7 @@ class InstallationController extends Controller
      */
     public function getInstalledState()
     {
-        return response()->json(Config::get('APP_INSTALLED'));
+        return response()->json(env('APP_INSTALLED', false));
     }
 
     /**
@@ -35,9 +34,9 @@ class InstallationController extends Controller
      */
     public function setInstalledState(Request $request)
     {
-        Config::set('APP_INSTALLED', true);
+        setEnv('APP_INSTALLED', true);
 
-        return response()->json(Config::get('APP_INSTALLED'));
+        return response()->json(env('APP_INSTALLED'));
     }
 
     /**
