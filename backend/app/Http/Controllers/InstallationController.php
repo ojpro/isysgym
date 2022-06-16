@@ -25,6 +25,11 @@ class InstallationController extends Controller
      */
     public function getInstalledState()
     {
+        $installed = env('APP_INSTALLED');
+
+        if(empty($installed)){
+            return response()->json(false);
+        }
         return response()->json(env('APP_INSTALLED', false));
     }
 
