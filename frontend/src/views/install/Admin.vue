@@ -97,14 +97,21 @@ export default {
         user_id: user
       }
 
-      axios.post('/user-role', user_role).then(({data}) => {
-
-        this.$store.commit('setInstallState',true)
-        
-        this.$router.push('/install/completed')
+      axios.post('/user-role', user_role).then(_ => {
+        this.postInstall()
       }).catch(error => {
         console.log(error)
       })
+    },
+    postInstall() {
+      axios.post('/install').then(() => {
+        this.setInstallState()
+      })
+    },
+    setInstallState() {
+      this.$store.commit('setInstallState', true)
+
+      this.$router.push('/install/completed')
     }
   },
 }
