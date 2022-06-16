@@ -6,16 +6,6 @@
 
 export default {
   name: 'App',
-  data() {
-    return {
-      route: this.$router
-    }
-  },
-  computed: {
-    watchRouter() {
-      this.checkIfInstalled()
-    }
-  },
   mounted() {
     // fetch the installation state
     //TODO: solve CORS problem
