@@ -103,6 +103,7 @@ export default {
         console.log(error)
       })
     },
+    //TODO: needs explanation
     postInstall() {
       axios.post('/install').then(() => {
         this.setInstallState()
