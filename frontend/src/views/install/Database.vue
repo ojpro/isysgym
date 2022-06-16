@@ -47,9 +47,9 @@
 </template>
 
 <script>
-import InstallationLayout from "../../layouts/InstallationLayout.vue";
-import InstallCard from "../../components/InstallCard.vue";
-import {axios} from "../../services/axios/config";
+import InstallationLayout from "@/layouts/InstallationLayout.vue";
+import InstallCard from "@/components/InstallCard.vue";
+import {axios} from "@/services/axios/config";
 
 export default {
   name: "Database",
