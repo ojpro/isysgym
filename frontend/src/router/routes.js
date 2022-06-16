@@ -13,6 +13,7 @@ const routes = [
     {
         path: '/install',
         name: 'install.start',
+        //TODO: use @ notation for import path
         component: () => import('../views/install/Index.vue'),
         meta: {
             install: true
