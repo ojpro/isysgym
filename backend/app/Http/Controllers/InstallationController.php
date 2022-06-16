@@ -41,7 +41,7 @@ class InstallationController extends Controller
      */
     public function setInstalledState(Request $request)
     {
-        setEnv('APP_INSTALLED', true);
+        setEnv('APP_INSTALLED', json_encode(true));
 
         return response()->json(env('APP_INSTALLED'));
     }
