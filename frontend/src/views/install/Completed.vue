@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     redirectToDashboard() {
-      this.$router.push('/')
+      this.$router.push('/dashboard')
     }
   },
 }
