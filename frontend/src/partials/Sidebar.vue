@@ -2,8 +2,9 @@
   <aside class="w-72 sticky top-0 left-0 bottom-0 h-screen transition dark:bg-gray-800" aria-label="Sidebar"
          :class="openSidebar ? '' : 'hidden'"
   >
-    <div class="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">
-      <h2 class="text-center mb-6 font-bold">APP_NAME</h2>
+    <!--    //TODO: use merakiui.com for components -->
+    <div class="overflow-y-auto py-4 px-3">
+      <h2 class="text-center mb-6 font-bold dark:text-white">APP_NAME</h2>
       <ul class="space-y-2">
         <li>
           <router-link :to="{name:'dashboard'}"
