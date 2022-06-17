@@ -4,6 +4,7 @@ import localforage from 'localforage'
 
 const store = new Vuex.Store({
     state: {
+        //TODO: stop using the localforage for sensitive data
         // State to check if the app already installed
         installed: await localforage.getItem('installed') || false,
         // Toggle Dashboard sidebar menu
