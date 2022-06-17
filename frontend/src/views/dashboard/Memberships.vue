@@ -68,86 +68,59 @@
         </Modal>
 
       </div>
+
       <!--   Memberships list   -->
+
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th class="px-6 py-3" scope="col">
-              Product name
+              Name
             </th>
-            <th class="px-6 py-3" scope="col">
-              Color
-            </th>
-            <th class="px-6 py-3" scope="col">
-              Category
-            </th>
-            <th class="px-6 py-3" scope="col">
+            <th class="px-6 py-3 text-center" scope="col">
               Price
             </th>
-            <th class="px-6 py-3" scope="col">
+            <th class="px-6 py-3 text-center" scope="col">
+              Attendances
+            </th>
+            <th class="px-6 py-3 text-center" scope="col">
+              Members
+            </th>
+            <th class="px-6 py-3 text-center" scope="col">
+              Actions
               <span class="sr-only">Edit</span>
             </th>
           </tr>
           </thead>
           <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+          <tr v-for="membership in memberships" :key="membership.id"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-              Apple MacBook Pro 17"
+              {{ membership.title }}
             </th>
-            <td class="px-6 py-4">
-              Sliver
+            <td class="px-6 py-4 text-center">
+              {{ membership.price }} DH
             </td>
-            <td class="px-6 py-4">
-              Laptop
+            <td class="px-6 py-4 text-center">
+              {{ membership.number_of_attendances }}
             </td>
-            <td class="px-6 py-4">
-              $2999
+            <td class="px-6 py-4 text-center">
+              X
             </td>
-            <td class="px-6 py-4 text-right">
-              <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>
-            </td>
-          </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-              Microsoft Surface Pro
-            </th>
-            <td class="px-6 py-4">
-              White
-            </td>
-            <td class="px-6 py-4">
-              Laptop PC
-            </td>
-            <td class="px-6 py-4">
-              $1999
-            </td>
-            <td class="px-6 py-4 text-right">
-              <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>
-            </td>
-          </tr>
-          <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-              Magic Mouse 2
-            </th>
-            <td class="px-6 py-4">
-              Black
-            </td>
-            <td class="px-6 py-4">
-              Accessories
-            </td>
-            <td class="px-6 py-4">
-              $99
-            </td>
-            <td class="px-6 py-4 text-right">
+            <td class="px-6 py-4 text-center">
               <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>
             </td>
           </tr>
           </tbody>
+
         </table>
       </div>
     </div>
 
-    <SuccessToast v-show="toasts.success" @closeToast="toasts.success = false" class="fixed bottom-4 right-4" message="Membership added successfully.">
+    <SuccessToast v-show="toasts.success" class="fixed bottom-4 right-4" message="Membership added successfully."
+                  @closeToast="toasts.success = false">
 
     </SuccessToast>
   </DashboardLayout>
@@ -163,6 +136,7 @@ export default {
   name: "Memberships",
   data() {
     return {
+      memberships: {},
       modal: {
         title: 'New Membership',
         show: false
@@ -185,6 +159,13 @@ export default {
     'SuccessToast': Success
   },
   methods: {
+    fetchMemberships() {
+      axios.get('membership').then(({data}) => {
+        this.memberships = data;
+      }).catch(error => {
+        console.log(error)
+      })
+    },
     toggleModal(val) {
       this.modal.show = val
     },
@@ -204,10 +185,12 @@ export default {
         // icon: formData
       }
 
-      axios.post('/membership', data).then(data => {
-        console.log(data);
+      axios.post('/membership', data).then(({data}) => {
         // Hide modal
         this.toggleModal(false)
+
+        this.memberships.push(data)
+
         // Show success message
         this.toasts.success = true
         setTimeout(_ => {
@@ -221,6 +204,9 @@ export default {
 
     },
   },
+  mounted() {
+    this.fetchMemberships()
+  }
 }
 </script>
 
