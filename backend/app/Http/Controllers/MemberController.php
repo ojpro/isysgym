@@ -33,7 +33,10 @@ class MemberController extends Controller
 
         // Hash the password
         $request->merge(
-            ['password' => Hash::make($request->password)]
+            [
+                'password' => Hash::make($request->password),
+                'uuid' => \Illuminate\Support\Str::uuid()->toString()
+            ]
         );
 
         $member = Member::create($request->all());
@@ -73,6 +76,7 @@ class MemberController extends Controller
         );
 
         $member->update($request->all());
+
 
         return response()->json([
             'success' => 'Member information updated successgully.'

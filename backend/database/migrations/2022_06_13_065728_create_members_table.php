@@ -16,8 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->uuid()
                 ->nullable()
-                ->unique()
-                ->default(\Illuminate\Support\Str::uuid()->toString());
+                ->unique();
             $table->string('first_name');
             $table->string('last_name');
             // TODO: centralize the gender options
