@@ -14,7 +14,7 @@ class StoreInstallationRequest extends FormRequest
      */
     public function authorize()
     {
-        return Config::get('APP_INSTALLED') == false;
+        return env('APP_INSTALLED') != true;
     }
 
     /**
