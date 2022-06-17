@@ -5,7 +5,9 @@ import localforage from 'localforage'
 const store = new Vuex.Store({
     state: {
         // State to check if the app already installed
-        installed: await localforage.getItem('installed') || false
+        installed: await localforage.getItem('installed') || false,
+        // Toggle Dashboard sidebar menu
+        openSidebar: true
     },
     mutations: {
         // Set the installation state
@@ -13,6 +15,11 @@ const store = new Vuex.Store({
             localforage.setItem('installed', payload).then(data => {
                 state.installed = payload
             })
+        },
+
+        // Toggle Sidebar
+        toggleSidebar(state) {
+            state.openSidebar = !state.openSidebar
         }
     },
     actions: {
@@ -28,6 +35,10 @@ const store = new Vuex.Store({
                     commit('setInstallState', true)
                 }
             })
+        },
+
+        toggleSidebar: ({commit}) => {
+            commit('toggleSidebar')
         }
     },
     getters: {
