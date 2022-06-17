@@ -8,7 +8,11 @@ const store = new Vuex.Store({
         // State to check if the app already installed
         installed: await localforage.getItem('installed') || false,
         // Toggle Dashboard sidebar menu
-        openSidebar: true
+        openSidebar: true,
+        // GYM data
+        gym_id: await localforage.getItem('gym_id'),
+        // Save User ID
+        userId: await localforage.getItem('user_id'),
     },
     mutations: {
         // Set the installation state
@@ -21,7 +25,20 @@ const store = new Vuex.Store({
         // Toggle Sidebar
         toggleSidebar(state) {
             state.openSidebar = !state.openSidebar
-        }
+        },
+
+        // set app data
+        setGymID(state, payload) {
+            localforage.setItem('gym_id', payload).then(data => {
+                state.gym_id = payload
+            })
+        },
+        // set User ID
+        setUserID(state, payload) {
+            localforage.setItem('user_id', payload).then(data => {
+                state.userId = payload
+            })
+        },
     },
     actions: {
         fetchInstallState: ({commit}) => {
@@ -40,7 +57,15 @@ const store = new Vuex.Store({
 
         toggleSidebar: ({commit}) => {
             commit('toggleSidebar')
-        }
+        },
+
+        setGymId: (({commit},data) => {
+            commit('setGymID',data)
+        }),
+
+        setUserID: (({commit},id) => {
+            commit('setUserID', id)
+        })
     },
     getters: {
         isInstalled: (state) => state.installed
