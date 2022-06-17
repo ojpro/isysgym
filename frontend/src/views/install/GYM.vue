@@ -56,7 +56,10 @@ export default {
     createGym() {
       axios.post('/gym', {
         'name': this.fields.name
-      }).then(data => {
+      }).then(({data}) => {
+
+        this.$store.dispatch('setGymId', data.id);
+
         this.$router.push('/install/admin')
       }).catch(error => {
         console.log(error)
