@@ -33,7 +33,7 @@ class GymController extends Controller
 
         // return a response
         // TODO: spelling faults
-        return response()->json(['success' => 'Gym Created successfully']);
+        return response()->json($gym);
     }
 
     /**
