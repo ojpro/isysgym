@@ -11,6 +11,11 @@ const routes = [
         component: () => import('@/views/dashboard/Dashboard.vue')
     },
     {
+        path: '/blank',
+        name: 'blank',
+        component: () => import('@/views/dashboard/Blank.vue')
+    },
+    {
         path: '/install',
         name: 'install.start',
         //TODO: use @ notation for import path
