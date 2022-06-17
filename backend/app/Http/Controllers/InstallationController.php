@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InstallationRequest;
 use App\Http\Requests\StoreInstallationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -10,20 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class InstallationController extends Controller
 {
-    public function __construct()
-    {
-        // Not Found page if the app already installed
-        if (env('APP_INSTALLED')) {
-            abort(403);
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getInstalledState()
+    public function getInstalledState(InstallationRequest $request)
     {
         $installed = env('APP_INSTALLED');
 
@@ -39,8 +32,9 @@ class InstallationController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function setInstalledState(Request $request)
+    public function setInstalledState(InstallationRequest $request)
     {
+
         setEnv('APP_INSTALLED', json_encode(true));
 
         return response()->json(env('APP_INSTALLED'));
