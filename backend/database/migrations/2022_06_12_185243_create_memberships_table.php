@@ -14,11 +14,13 @@ return new class extends Migration {
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
+            //TODO: choice another name
             $table->string('title')->unique();
             $table->foreignId('gym_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->float('price');
+            //TODO: choice another name
             $table->tinyInteger('number_of_attendances');
             $table->text('icon')->nullable();
 

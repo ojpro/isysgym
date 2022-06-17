@@ -13,6 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('gyms', function (Blueprint $table) {
+            //TODO: add currency
             $table->id();
             $table->string('name', 100);
             $table->string('slogan')->nullable();

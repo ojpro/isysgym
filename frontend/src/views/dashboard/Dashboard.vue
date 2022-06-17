@@ -12,6 +12,7 @@ import DashboardLayout from "@/layouts/DashboardLayout.vue";
 export default {
   name: "Dashboard",
   components:{
+    //TODO: start using PascalCase for Components name
     'dashboard-layout':DashboardLayout
   }
 }
