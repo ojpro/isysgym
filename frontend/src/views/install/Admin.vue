@@ -68,7 +68,7 @@ export default {
     },
     createAdminRole() {
       let role = {
-        name: 'admin4',
+        name: 'admin',
         description: 'Administrator role with full permissions'
       }
       // TODO: create only if not exists
