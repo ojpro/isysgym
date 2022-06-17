@@ -29,7 +29,7 @@
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown"
                 @click="toggleUserDropdown()">
           <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+          <img class="w-8 h-8 rounded-full" src="@/assets/images/avatar.svg" alt="user photo">
         </button>
 
         <div v-show="openUserDropdown"
