@@ -16,6 +16,11 @@ const routes = [
         component: () => import('@/views/dashboard/Memberships.vue')
     },
     {
+        path: '/dashboard/members',
+        name: 'dashboard.members',
+        component: () => import('@/views/dashboard/Members.vue')
+    },
+    {
         path: '/blank',
         name: 'blank',
         component: () => import('@/views/dashboard/Blank.vue')
