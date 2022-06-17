@@ -210,6 +210,10 @@ export default {
         this.toggleModal(false)
         // Show success message
         this.toasts.success = true
+        setTimeout(_ => {
+          this.toasts.success = false
+        }, 3000)
+
 
       }).then(error => {
         console.log(error)
