@@ -85,8 +85,12 @@ export default {
         email: this.field.email,
         password: this.field.password
       }
-      axios.post('/user', credentials).then(response => {
-        let admin_id = response.data.id
+      axios.post('/user', credentials).then(({data}) => {
+
+        this.$store.dispatch('setUserID', data.id);
+
+        let admin_id = data.id
+
         this.setAdminRole(role_id, admin_id)
       }).catch(error => {
         console.log(error)
