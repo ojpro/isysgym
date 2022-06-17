@@ -172,6 +172,16 @@ export default {
     imageSelected(e) {
       this.modalData.icon = e.target.files[0]
     },
+    clearModalData() {
+      let newData = {
+        title: '',
+        gym_id: 1,
+        price: null,
+        number_of_attendances: null,
+        icon: ''
+      }
+      this.modalData = newData
+    },
     addAttendance() {
       let formData = new FormData();
       formData.append('icon', this.modalData.icon)
@@ -197,6 +207,7 @@ export default {
           this.toasts.success = false
         }, 3000)
 
+        this.clearModalData()
 
       }).then(error => {
         console.log(error)
