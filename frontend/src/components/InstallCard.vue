@@ -1,6 +1,7 @@
 <template>
   <div
       class="w-11/12 sm:w-1/2 lg:w-1/3 overflow-hidden absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-sm rounded">
+<!-- TODO:Loading   -->
     <form method="POST" @submit.prevent="submitClicked">
       <h1 class="text-center text-lg font-medium m-2">{{ title }}</h1>
       <div class="container p-4 my-4">
