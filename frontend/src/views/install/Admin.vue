@@ -71,6 +71,7 @@ export default {
         name: 'admin4',
         description: 'Administrator role with full permissions'
       }
+      // TODO: create only if not exists
       axios.post('/role', role).then(response => {
         let role_id = response.data.id
         this.createAdminAccount(role_id)
