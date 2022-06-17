@@ -1,17 +1,17 @@
 <template>
   <install-layout>
     <card
-        :next-btn-name="card.btn.next.name"
-        :title="card.title"
         :current-step="card.step.current"
-        :total-steps="card.step.total"
-        :submit-clicked="redirectToCreateAdmin">
+        :next-btn-name="card.btn.next.name"
+        :submit-clicked="redirectToCreateAdmin"
+        :title="card.title"
+        :total-steps="card.step.total">
       <!--   GYM Name   -->
       <div class="mb-2">
-        <label for="gym_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">GYM Name</label>
-        <input type="text" id="gym_name"
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="gym_name">GYM Name</label>
+        <input id="gym_name" v-model="fields.name"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="e.g GYMStar" required v-model="fields.name">
+               placeholder="e.g GYMStar" required type="text">
       </div>
 
     </card>
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import InstallationLayout from "@/layouts/InstallationLayout.vue";
 import InstallCard from "@/components/InstallCard.vue";
+import InstallationLayout from "@/layouts/InstallationLayout.vue";
 import {axios} from "@/services/axios/config";
 
 export default {
@@ -61,6 +61,7 @@ export default {
         this.$store.dispatch('setGymId', data.id);
 
         this.$router.push('/install/admin')
+
       }).catch(error => {
         console.log(error)
       })

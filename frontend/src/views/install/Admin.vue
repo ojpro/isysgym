@@ -1,29 +1,29 @@
 <template>
   <install-layout>
     <card
-        :next-btn-name="card.btn.next.name"
-        :title="card.title"
         :current-step="card.step.current"
-        :total-steps="card.step.total"
-        :submit-clicked="redirectToCompleted">
+        :next-btn-name="card.btn.next.name"
+        :submit-clicked="redirectToCompleted"
+        :title="card.title"
+        :total-steps="card.step.total">
       <!--   Admin Account   -->
       <div class="mb-6">
-        <label for="full_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Full Name</label>
-        <input type="text" id="full_name"
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="full_name">Full Name</label>
+        <input id="full_name" v-model="field.full_name"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="Oussama ELJABBARI" required v-model="field.full_name">
+               placeholder="Oussama ELJABBARI" required type="text">
       </div>
       <div class="mb-6">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-        <input type="email" id="email"
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="email">Email</label>
+        <input id="email" v-model="field.email"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="e.g admin@gymstar.com" required v-model="field.email">
+               placeholder="e.g admin@gymstar.com" required type="email">
       </div>
       <div class="mb-2">
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
-        <input type="password" id="password"
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="password">Password</label>
+        <input id="password" v-model="field.password"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="********" min="8" required v-model="field.password">
+               min="8" placeholder="********" required type="password">
       </div>
 
     </card>
@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import InstallationLayout from "@/layouts/InstallationLayout.vue";
 import InstallCard from "@/components/InstallCard.vue";
+import InstallationLayout from "@/layouts/InstallationLayout.vue";
 import {axios} from "@/services/axios/config";
 
 export default {
@@ -74,7 +74,9 @@ export default {
       // TODO: create only if not exists
       axios.post('/role', role).then(response => {
         let role_id = response.data.id
+
         this.createAdminAccount(role_id)
+
       }).catch(error => {
         console.log(error)
       })
@@ -92,6 +94,7 @@ export default {
         let admin_id = data.id
 
         this.setAdminRole(role_id, admin_id)
+
       }).catch(error => {
         console.log(error)
       })
