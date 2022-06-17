@@ -1,12 +1,12 @@
 <template>
-  <aside class="w-72 sticky top-0 left-0 bottom-0 h-screen transition" aria-label="Sidebar"
+  <aside class="w-72 sticky top-0 left-0 bottom-0 h-screen transition dark:bg-gray-800" aria-label="Sidebar"
          :class="openSidebar ? '' : 'hidden'"
   >
     <div class="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">
       <h2 class="text-center mb-6 font-bold">APP_NAME</h2>
       <ul class="space-y-2">
         <li>
-          <a href="#"
+          <router-link :to="{name:'dashboard'}"
              class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg
                 class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -15,21 +15,22 @@
               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
             </svg>
             <span class="ml-3">Dashboard</span>
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="#"
-             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            <svg
-                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path
-                  d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+          <router-link :to="{name:'dashboard.memberships'}"
+                       class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                 viewBox="0 0 20 20" fill="currentColor">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+              <path fill-rule="evenodd"
+                    d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                    clip-rule="evenodd"/>
             </svg>
-            <span class="flex-1 ml-3 whitespace-nowrap">Kanban</span>
-            <span
-                class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-          </a>
+
+            <span class="flex-1 ml-3 whitespace-nowrap">Memberships</span>
+          </router-link>
         </li>
         <li>
           <a href="#"
@@ -113,7 +114,7 @@ export default {
     }
   },
   watch: {
-    '$store.state.openSidebar' (){
+    '$store.state.openSidebar'() {
       this.openSidebar = this.$store.state.openSidebar
     }
   },
