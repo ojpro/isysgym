@@ -203,7 +203,8 @@ export default {
 
       let memberData = {
         first_name: this.modalData.first_name,
-        last_name: this.modalData.last_name
+        last_name: this.modalData.last_name,
+        gym_id:this.$store.state.gym_id
       }
 
 
