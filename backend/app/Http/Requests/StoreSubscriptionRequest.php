@@ -26,8 +26,8 @@ class StoreSubscriptionRequest extends FormRequest
         return [
             'member_id'=>['required','exists:members,id'],
             'membership_id'=>['required','exists:memberships,id'],
-            'started_at'=>['required','date'],
-            'expire_at'=>['required','date']
+            'started_at'=>['date'],
+            'expire_at'=>['date']
         ];
     }
 }
