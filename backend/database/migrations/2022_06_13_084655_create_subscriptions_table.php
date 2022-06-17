@@ -1,9 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Carbon;
 
 return new class extends Migration {
     /**
@@ -19,9 +19,10 @@ return new class extends Migration {
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('membership_id')->constrained()
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->dateTime('started_at')
+            $table->dateTime('started_at')->nullable()
                 ->default(Carbon::now()->toDateString());
-            $table->dateTime('expire_at');
+            $table->dateTime('expire_at')->nullable()
+                ->default(Carbon::now()->addMonth());
             $table->timestamps();
         });
     }
