@@ -209,7 +209,7 @@ export default {
 
         this.clearModalData()
 
-      }).then(error => {
+      }).catch(error => {
         console.log(error)
       })
 
