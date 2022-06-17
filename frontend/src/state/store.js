@@ -1,6 +1,6 @@
+import localforage from 'localforage'
 import Vuex from 'vuex'
 import {axios} from "../services/axios/config";
-import localforage from 'localforage'
 
 const store = new Vuex.Store({
     state: {
