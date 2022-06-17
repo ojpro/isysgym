@@ -199,7 +199,7 @@ export default {
         // Hide modal
         this.toggleModal(false)
 
-        this.memberships.push(data)
+        this.memberships.unshift(data)
 
         // Show success message
         this.toasts.success = true
