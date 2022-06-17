@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/dashboard/memberships',
         name: 'dashboard.memberships',
-        component: () => import('@/views/dashboard/Blank.vue')
+        component: () => import('@/views/dashboard/Memberships.vue')
     },
     {
         path: '/blank',
