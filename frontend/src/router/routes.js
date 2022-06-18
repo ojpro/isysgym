@@ -21,6 +21,11 @@ const routes = [
         component: () => import('@/views/dashboard/Members.vue')
     },
     {
+        path: '/dashboard/roles',
+        name: 'dashboard.roles',
+        component: () => import('@/views/dashboard/Roles.vue')
+    },
+    {
         path: '/blank',
         name: 'blank',
         component: () => import('@/views/dashboard/Blank.vue')
