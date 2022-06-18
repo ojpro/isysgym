@@ -143,7 +143,7 @@ export default {
       },
       modalData: {
         title: '',
-        gym_id: 1,
+        gym_id: this.$store.state.gym_id,
         price: null,
         number_of_attendances: null,
         icon: ''
