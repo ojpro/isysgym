@@ -173,14 +173,13 @@ export default {
       this.modalData.icon = e.target.files[0]
     },
     clearModalData() {
-      let newData = {
+      this.modalData = {
         title: '',
         gym_id: 1,
         price: null,
         number_of_attendances: null,
         icon: ''
       }
-      this.modalData = newData
     },
     addAttendance() {
       let formData = new FormData();
