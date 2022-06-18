@@ -3,7 +3,7 @@
 
     <div class="container">
       <div class="flex justify-between m-2">
-        <h1 class="font-normal">Memberships List</h1>
+        <h1 class="font-normal">Users List</h1>
 
         <!--    Add new Membership    -->
 
