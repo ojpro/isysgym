@@ -10,7 +10,9 @@
   "dependencies": {
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
+    "dayjs": "^1.11.3",
     "flowbite": "^1.4.7",
+    "litepie-datepicker": "^1.0.14",
     "localforage": "^1.10.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16",
