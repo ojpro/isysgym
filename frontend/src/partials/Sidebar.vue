@@ -78,17 +78,20 @@
           </router-link>
         </li>
         <li>
-          <a class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-             href="#">
+          <router-link :to="{name:'dashboard.users'}"
+                       class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
             <svg
                 class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path clip-rule="evenodd"
-                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                    fill-rule="evenodd"></path>
+                fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
             </svg>
-            <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
-          </a>
+            <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+          </router-link>
         </li>
         <li>
           <a class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
