@@ -35,8 +35,9 @@
           </router-link>
         </li>
         <li>
-          <a class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-             href="#">
+          <router-link :to="{name:'dashboard.attendances'}"
+                       class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
             <svg
                 class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -45,10 +46,10 @@
               <path
                   d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
             </svg>
-            <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
+            <span class="flex-1 ml-3 whitespace-nowrap">Attendances</span>
             <span
                 class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span>
-          </a>
+          </router-link>
         </li>
         <li>
           <router-link :to="{name:'dashboard.members'}"
