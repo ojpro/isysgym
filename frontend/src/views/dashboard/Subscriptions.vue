@@ -203,6 +203,7 @@ export default {
       let subscription = {
         member_id: this.modalData.member_id,
         membership_id: this.modalData.membership_id,
+        //TODO: DRY
         started_at: dayjs(this.modalData.started_at).format('YYYY-MM-DD HH:mm:ss'),
         expire_at: dayjs(this.modalData.expire_at).format('YYYY-MM-DD HH:mm:ss'),
 
