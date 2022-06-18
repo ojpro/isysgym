@@ -21,6 +21,7 @@ return new class extends Migration {
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->dateTime('started_at')->nullable()
                 ->default(Carbon::now()->toDateString());
+            /*TODO: format date (d-m-y) */
             $table->dateTime('expire_at')->nullable()
                 ->default(Carbon::now()->addMonth());
             $table->timestamps();
