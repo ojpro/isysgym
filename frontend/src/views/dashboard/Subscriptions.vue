@@ -47,12 +47,12 @@
             <div>
 
               <label id="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                Select Subscription Dates
+                Select Start & <span id="expire_date" class="cursor-pointer">Expire Date</span> <span class="text-gray-700 text-xs">(optional)</span>
               </label>
 
               <div class="flex wrap gap-1">
                 <litepie-datepicker
-                    v-model="modalData.started_at"
+                    v-model="started_at"
                     :formatter="datepicker.format"
                     as-single
                     placeholder="Start date"
@@ -61,10 +61,11 @@
                 ></litepie-datepicker>
 
                 <litepie-datepicker
-                    v-model="modalData.expire_at"
+                    v-model="expire_at"
                     :formatter="datepicker.format"
                     as-single
                     placeholder="Expire date"
+                    trigger="expire_date"
                     required
                 ></litepie-datepicker>
               </div>
@@ -164,8 +165,6 @@ export default {
       modalData: {
         member_id: null,
         membership_id: null,
-        started_at: ref(''),
-        expire_at: ref('')
       },
       toasts: {
         success: false
@@ -181,12 +180,20 @@ export default {
     Modal,
     LitepieDatepicker
   },
+  setup() {
+    //TODO: check date if they are valid
+    const started_at = ref(dayjs().format('DD MMM YYYY'))
+    const expire_at = ref(dayjs().add(1,'month').format('DD MMM YYYY'))
+    return {
+      started_at,
+      expire_at
+    };
+  },
   watch: {
-    '$data.modalData.started_at': {
+    started_at: {
       handler: function (val, oldVal) {
         //TODO: auto select the next month
-        // this.modalData.expire_at = ref(dayjs(val).add(1, 'month').format('DD MMM YYYY').toString())
-        console.log(val)
+        // let nextMonth = ref(dayjs(val).add(1, 'month').format('DD MMM YYYY'))
       },
       deep: true
     }
