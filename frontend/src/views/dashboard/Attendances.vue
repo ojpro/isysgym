@@ -83,10 +83,11 @@
           <tr v-for="attendance in attendances" :key="attendance.id"
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-              {{ attendance.member_id }}
+              <!--      TODO: link to member profile        -->
+              {{ attendance.member.first_name + ' ' + attendance.member.last_name }}
             </th>
             <td class="px-6 py-4 text-center">
-              {{ attendance.attended_at }} DH
+              {{ attendance.attended_at }}
             </td>
             <td class="px-6 py-4 text-center">
               1/3

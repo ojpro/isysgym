@@ -13,4 +13,8 @@ class Attendance extends Model
         'attended_at',
         'member_id'
     ];
+
+    public function member(){
+        return $this->belongsTo(Member::class);
+    }
 }

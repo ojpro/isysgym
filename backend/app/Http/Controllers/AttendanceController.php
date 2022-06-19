@@ -15,7 +15,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendances = Attendance::all();
+        $attendances = Attendance::with('member')->get();
 
         return response()->json($attendances);
     }
