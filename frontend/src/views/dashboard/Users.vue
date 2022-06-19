@@ -104,7 +104,7 @@
               {{ user.email }}
             </td>
             <td class="px-6 py-4 text-center">
-              role
+              {{ user.role[0].name }}
             </td>
             <td class="px-6 py-4 text-center">
               <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>
