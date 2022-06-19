@@ -15,4 +15,14 @@ class Subscription extends Model
         'started_at',
         'expire_at'
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class);
+    }
 }

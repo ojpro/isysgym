@@ -47,7 +47,8 @@
             <div>
 
               <label id="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                Select Start & <span id="expire_date" class="cursor-pointer">Expire Date</span> <span class="text-gray-700 text-xs">(optional)</span>
+                Select Start & <span id="expire_date" class="cursor-pointer">Expire Date</span> <span
+                  class="text-gray-700 text-xs">(optional)</span>
               </label>
 
               <div class="flex wrap gap-1">
@@ -65,8 +66,8 @@
                     :formatter="datepicker.format"
                     as-single
                     placeholder="Expire date"
-                    trigger="expire_date"
                     required
+                    trigger="expire_date"
                 ></litepie-datepicker>
               </div>
             </div>
@@ -110,10 +111,10 @@
           <tr v-for="subscription in subscriptions" :key="subscription.id"
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-              {{ subscription.member_id }}
+              {{ subscription.member.first_name + ' ' + subscription.member.last_name }}
             </th>
             <td class="px-6 py-4 text-center">
-              {{ subscription.membership_id }}
+              {{ subscription.membership.title }}
             </td>
             <td class="px-6 py-4 text-center">
               <!--      TODO: format date        -->
@@ -182,8 +183,9 @@ export default {
   },
   setup() {
     //TODO: check date if they are valid
-    const started_at = ref(dayjs().format('DD MMM YYYY'))
-    const expire_at = ref(dayjs().add(1,'month').format('DD MMM YYYY'))
+    //TODO: get current time also
+    const started_at = ref(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+    const expire_at = ref(dayjs().add(1, 'month').format('YYYY-MM-DD HH:mm:ss'))
     return {
       started_at,
       expire_at
@@ -204,8 +206,8 @@ export default {
         member_id: this.modalData.member_id,
         membership_id: this.modalData.membership_id,
         //TODO: DRY
-        started_at: dayjs(this.modalData.started_at).format('YYYY-MM-DD HH:mm:ss'),
-        expire_at: dayjs(this.modalData.expire_at).format('YYYY-MM-DD HH:mm:ss'),
+        started_at: dayjs(this.started_at).format('YYYY-MM-DD HH:mm:ss'),
+        expire_at: dayjs(this.expire_at).format('YYYY-MM-DD HH:mm:ss'),
 
       }
 
