@@ -115,6 +115,9 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/debug" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

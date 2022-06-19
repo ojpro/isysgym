@@ -111,6 +111,9 @@
       <path value="$PROJECT_DIR$/backend/vendor/psr/container" />
       <path value="$PROJECT_DIR$/backend/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/backend/vendor/composer" />
+      <path value="$PROJECT_DIR$/backend/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/backend/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/backend/vendor/symfony/debug" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
