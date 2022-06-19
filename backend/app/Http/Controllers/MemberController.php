@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Member;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
@@ -16,7 +17,31 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+        // TODO: Use laravel ORM
+//        $members = Member::with(['membership' => function ($query) {
+//            $query->orderBy('subscriptions.created_at', 'ASC');
+////            ->orderBy('subscriptions.created_at','asc')
+//        }])->get();
+
+        //TODO: fix this , improve the code quality
+        $members = DB::table('members')
+            ->select('members.*',
+                'memberships.id as membership_id',
+                'memberships.title as membership_title',
+                'memberships.number_of_attendances'
+
+            )
+            ->join('subscriptions',function($join){
+
+                $join->on('members.id', '=', 'subscriptions.member_id')
+
+                    ->orderBy('subscriptions.started_at','desc');
+
+            })
+            ->join('memberships', 'memberships.id', '=', 'subscriptions.membership_id')
+            ->distinct()
+            ->get();
+
 
         return response()->json($members);
     }

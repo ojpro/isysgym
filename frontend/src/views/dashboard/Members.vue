@@ -115,7 +115,7 @@
               Attendances
             </th>
             <th class="px-6 py-3 text-center" scope="col">
-              Members
+              Membership
             </th>
             <th class="px-6 py-3 text-center" scope="col">
               Actions
@@ -131,13 +131,13 @@
               {{ member.first_name + ' ' + member.last_name }}
             </th>
             <td class="px-6 py-4 text-center">
-              {{ member.created_at }} DH
+              {{ new Date(member.created_at).toDateString() }}
             </td>
             <td class="px-6 py-4 text-center">
-               hey
+              x/2
             </td>
             <td class="px-6 py-4 text-center">
-              X
+              {{ member.membership_title}}
             </td>
             <td class="px-6 py-4 text-center">
               <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>

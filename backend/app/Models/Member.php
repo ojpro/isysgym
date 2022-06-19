@@ -21,4 +21,14 @@ class Member extends Model
         'password',
         'avatar'
     ];
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function membership(){
+        return $this->belongsToMany(Membership::class,'subscriptions');
+    }
+
 }
