@@ -45,31 +45,30 @@
 
             </div>
             <div>
-
               <label id="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                 Select Start & <span id="expire_date" class="cursor-pointer">Expire Date</span> <span
                   class="text-gray-700 text-xs">(optional)</span>
+
               </label>
-
-              <div class="flex wrap gap-1">
-                <litepie-datepicker
-                    v-model="started_at"
-                    :formatter="datepicker.format"
-                    as-single
-                    placeholder="Start date"
-                    required
-                    trigger="start_date"
-                ></litepie-datepicker>
-
-                <litepie-datepicker
-                    v-model="expire_at"
-                    :formatter="datepicker.format"
-                    as-single
-                    placeholder="Expire date"
-                    required
-                    trigger="expire_date"
-                ></litepie-datepicker>
-              </div>
+                <div class="flex wrap gap-1">
+                  <litepie-datepicker
+                      v-model="started_at"
+                      :formatter="datepicker.format"
+                      as-single
+                      placeholder="Start date"
+                      required
+                      trigger="start_date"
+                  ></litepie-datepicker>
+                  <!--   TODO: use ref       -->
+                  <litepie-datepicker
+                      v-model="expire_at"
+                      :formatter="datepicker.format"
+                      as-single
+                      placeholder="Expire date"
+                      required
+                      trigger="expire_date"
+                  ></litepie-datepicker>
+                </div>
             </div>
             <button
                 class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
