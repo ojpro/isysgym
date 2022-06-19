@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMembershipRequest;
 use App\Http\Requests\UpdateMembershipRequest;
 use App\Models\Membership;
+use Illuminate\Support\Facades\DB;
 
 class MembershipController extends Controller
 {
@@ -15,7 +16,11 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::all();
+        $memberships = Membership::withCount(['members' => function ($query) {
+            //LEARNED: clause in orm relations
+            $query->select(DB::raw('count(distinct(uuid))'));
+        }])->withCount('subscriptions')->get();
+
 
         return response()->json($memberships);
     }
@@ -78,6 +83,6 @@ class MembershipController extends Controller
 
         $membership->delete();
 
-        return response()->json(['success'=>'Membership deleted successfully.']);
+        return response()->json(['success' => 'Membership deleted successfully.']);
     }
 }

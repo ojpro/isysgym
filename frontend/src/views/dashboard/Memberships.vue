@@ -88,6 +88,9 @@
               Members
             </th>
             <th class="px-6 py-3 text-center" scope="col">
+              Subscriptions
+            </th>
+            <th class="px-6 py-3 text-center" scope="col">
               Actions
               <span class="sr-only">Edit</span>
             </th>
@@ -107,7 +110,10 @@
               {{ membership.number_of_attendances }}
             </td>
             <td class="px-6 py-4 text-center">
-              X
+              {{ membership.members_count }}
+            </td>
+            <td class="px-6 py-4 text-center">
+              {{ membership.subscriptions_count }}
             </td>
             <td class="px-6 py-4 text-center">
               <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>

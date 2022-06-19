@@ -16,4 +16,17 @@ class Membership extends Model
         'number_of_attendances',
         'icon'
     ];
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function members()
+    {
+        //LEARNED: relations types
+        return $this->belongsToMany(Member::class, 'subscriptions');
+
+//        return $this->hasManyThrough(Member::class, Subscription::class, 'membership_id', 'id', 'id', 'member_id');
+    }
 }
