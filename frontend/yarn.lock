@@ -847,6 +847,11 @@ vite@^2.9.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-chartjs@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-4.1.1.tgz#b1ffc2845e09d14cb5255305b11bd3e8df8058ab"
+  integrity sha512-rKIQ3jPrjhwxjKdNJppnYxRuBSrx4QeM3nNHsfIxEqjX6QS4Jq6e6vnZBxh2MDpURDC2uvuI2N0eIt1cWXbBVA==
+
 vue-router@^4.0.16:
   version "4.0.16"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.16.tgz#9477beeeef36e80e04d041a1738801a55e6e862e"
