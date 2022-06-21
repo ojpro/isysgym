@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Member;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,33 +18,53 @@ class MemberController extends Controller
      */
     public function index()
     {
-        // TODO: Use laravel ORM
+        if (!empty(request('search'))) {
+            $search = request('search');
+            $members = DB::table('members')
+                ->select('members.*',
+                    'memberships.id as membership_id',
+                    'memberships.title as membership_title',
+                    'memberships.number_of_attendances')
+                ->join('subscriptions', function ($join) {
+                    $join->on('members.id', '=', 'subscriptions.member_id')
+                        ->orderBy('subscriptions.started_at', 'desc');
+                })->join('memberships', 'memberships.id', '=', 'subscriptions.membership_id')
+                ->where('members.first_name', 'LIKE', $search . '%')
+                ->orWhere('members.last_name', 'LIKE', '%' . $search . '%')
+                ->orWhere('memberships.title', 'like', $search . '%')
+                ->distinct()
+                ->get();
+
+            return response()->json($members);
+        } else {
+
+
+            // TODO: Use laravel ORM
 //        $members = Member::with(['membership' => function ($query) {
 //            $query->orderBy('subscriptions.created_at', 'ASC');
 ////            ->orderBy('subscriptions.created_at','asc')
 //        }])->get();
 
-        //TODO: fix this , improve the code quality
-        $members = DB::table('members')
-            ->select('members.*',
-                'memberships.id as membership_id',
-                'memberships.title as membership_title',
-                'memberships.number_of_attendances'
+            //TODO: fix this , improve the code quality
+            $members = DB::table('members')
+                ->select('members.*',
+                    'memberships.id as membership_id',
+                    'memberships.title as membership_title',
+                    'memberships.number_of_attendances'
 
-            )
-            ->join('subscriptions',function($join){
+                )
+                ->join('subscriptions', function ($join) {
 
-                $join->on('members.id', '=', 'subscriptions.member_id')
+                    $join->on('members.id', '=', 'subscriptions.member_id')
+                        ->orderBy('subscriptions.started_at', 'desc');
 
-                    ->orderBy('subscriptions.started_at','desc');
+                })
+                ->join('memberships', 'memberships.id', '=', 'subscriptions.membership_id')
+                ->distinct()
+                ->get();
 
-            })
-            ->join('memberships', 'memberships.id', '=', 'subscriptions.membership_id')
-            ->distinct()
-            ->get();
-
-
-        return response()->json($members);
+            return response()->json($members);
+        }
     }
 
     /**

@@ -3,9 +3,24 @@
   <DashboardLayout>
 
     <div class="container">
-      <div class="flex justify-between m-2">
+      <div class="flex justify-between m-2 items-center">
         <h1 class="font-normal">Members List</h1>
+        <div class="relative w-1/3">
 
+          <label class="sr-only" for="simple-search">Search</label>
+          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    fill-rule="evenodd"></path>
+            </svg>
+          </div>
+          <input id="simple-search" v-model="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 placeholder="Search"
+                 required type="search" @input="searchMembers">
+
+        </div>
         <!--    Add new Membership    -->
 
         <button
@@ -137,7 +152,7 @@
               x/2
             </td>
             <td class="px-6 py-4 text-center">
-              {{ member.membership_title}}
+              {{ member.membership_title }}
             </td>
             <td class="px-6 py-4 text-center">
               <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="#">Edit</a>
@@ -180,7 +195,8 @@ export default {
         membership_id: null,
       },
       memberships: {},
-      members: {}
+      members: {},
+      search: ''
     }
   },
   components: {
@@ -189,6 +205,13 @@ export default {
     'Modal': Modal
   },
   methods: {
+    searchMembers() {
+      axios.get('member/?search=' + this.search).then(({data}) => {
+        this.members = data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
     toggleModal(val) {
       this.modal.show = val
     },
@@ -204,7 +227,7 @@ export default {
       let memberData = {
         first_name: this.modalData.first_name,
         last_name: this.modalData.last_name,
-        gym_id:this.$store.state.gym_id
+        gym_id: this.$store.state.gym_id
       }
 
 
