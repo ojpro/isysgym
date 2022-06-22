@@ -21,7 +21,7 @@
       </button>
 
       <a href="https://flowbite.com" class="flex items-center">
-        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Dashboard</span>
       </a>
       <div class="flex items-center md:order-2 relative ml-auto">
         <button type="button"
